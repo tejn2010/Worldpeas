@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Peas - Shopping Cart</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=edit" />
+    <style>
+
+        /* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: rgba(255, 255, 220, 1);
+    color: black;
+    line-height: 1.5;
+}
+
+/* Shopping Cart Container */
+.shopping-cart {
+    background: rgba(255, 255, 220, 1);
+    width: 100%;
+    min-width: 1440px;
+    min-height: 1024px;
+    display: flex;
+    flex-direction: column;
+    padding: 33px 0;
+    display: flex;
+    /*align-items: center;*/
+}
+
+.header-section {
+    width: 100%;
+    height: 62px;
+    /*background: rgb(102, 71, 71); */
+    position: relative;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    max-width: 1400px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 15px 12px 15px;
+    background: rgba(255, 255, 255, 0.15); /* translucent background */
+    -webkit-backdrop-filter: blur(12px); /* Safari support */
+    backdrop-filter: blur(12px); /* frosted glass blur */
+    border: 1px solid rgba(255, 255, 255, 0.25); /* subtle border */
+    border-radius: 12px;
+    z-index: 1500;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo */
+.logo {
+    position: absolute;
+    top: 19px;
+    font-family: 'Newsreader', serif;
+    font-weight: 500;
+    color: #426b1f; /* dark green text */
+    font-size: 36px;
+    letter-spacing: -0.32px;
+    line-height: 32px;
+}
+
+/* Navigation */
+nav {
+    position: absolute;
+    left: 836px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-item {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 20.8px;
+    text-decoration: none;
+    padding: 5px 7px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #426b1f;
+}
+
+/* Basket button */
+.basket-btn {
+    position: relative;
+    left: 1260px;
+    width: 116px;
+    height: 38px;
+    background: rgba(66, 107, 31, 0.9);
+    border: none;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    -webkit-backdrop-filter: blur(8px); /* Safari support */
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+
+.basket-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: #426b1f;
+}
+
+/* Menu bar layout */
+.menu-bar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.menu-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Hamburger menu (hidden on desktop) */
+.menu-toggle {
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none;
+    color: white;
+}
+
+        
+        /* Header Styles 
+        header {
+            position: fixed;
+            width: 1400px;
+            padding: 12px 0;
+            background-color: rgb(255, 255, 255);
+            padding-left: 12px;
+            padding-right: 12px;
+            border-radius: 8px;
+            z-index: 1500;
+        }
+        .logo {
+            position:absolute;
+            top: 19px;
+            font-family: 'Newsreader', serif;
+            font-weight: 500;
+            color: #426b1f;
+            font-size: 36px;
+            letter-spacing: -0.32px;
+            line-height: 32px;
+        }
+        
+        nav {
+            position: absolute;
+         
+            left: 836px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .nav-item {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            color: black;
+            font-size: 16px;
+            line-height: 20.8px;
+            text-decoration: none;
+            padding: 5px 7px;
+            border-radius: 8px;
+        }
+        .nav-item:hover {
+            background-color: rgba(198, 195, 195, 0.9);
+            color: rgb(255, 255, 255);
+        }
+        
+        .basket-btn {
+            position: relative;
+         
+            left: 1260px;
+            width: 116px;
+            height: 38px;
+            background-color: #426b1f;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            
+        }
+        
+        .basket-btn:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        .menu-bar {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+        }
+        
+        .menu-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+          Mobile Styles 
+
+        .menu-toggle {
+            font-size: 28px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: none; /* hidden on desktop 
+        }*/
+
+
+/* Basket Page Heading Section */
+.basket-heading {
+    width: 100%;
+    height: 76px;
+    /*background: white;*/
+    position: relative;
+    margin-top: 50px;
+    z-index: 1000;
+}
+
+.heading-container {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    padding: 0 96px 16px;
+}
+
+.basket-title {
+    height: 77px;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    font-family: 'Newsreader', serif;
+    font-weight: 400;
+    color: black;
+    font-size: 64px;
+    letter-spacing: -1.28px;
+    line-height: 76.8px;
+    white-space: nowrap;
+}
+
+.items-count {
+    height: 26px;
+    display: flex;
+    /*align-items: end;*/
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 26px;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    color: black;
+    letter-spacing: 0;
+    white-space: nowrap;
+    margin-bottom: 18px;
+    margin-right: 1065px;
+}
+
+.separator {
+    position: absolute;
+    bottom: 2px;
+    left: 92px;
+    width: calc(100% - 192px);
+    height: 2px;
+    background: #000000;
+}
+
+/* Main Content */
+.main-content {
+    display: flex;
+    flex: 1;
+    gap: 24px;
+    padding: 0 24px;
+    z-index: 1000;
+}
+
+.product-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.order-summary {
+    width: 320px;
+}
+
+/* Product Card */
+.product-card {
+    width: 77%;
+    height: 157px;
+    background: #fafaf5;
+    border-radius: 24px;
+    border: 2px solid #e6e6e6;
+    position: relative;
+    overflow: hidden;
+    left: 69px;
+    top: 45px;
+}
+
+
+.product-image {
+    position: absolute;
+    height: calc(100% + 1px);
+    top: 0;
+    left: 0;
+    width: 160px;
+    object-fit: cover;
+    border-top-left-radius: 22px;
+    border-bottom-left-radius: 22px;
+}
+
+.product-info {
+    position: relative;
+    height: 100%;
+}
+
+.product-name {
+    position: absolute;
+    top: 24px;
+    left: 184px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: black;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: 26px;
+    white-space: nowrap;
+}
+
+.product-price-per-unit {
+    position: absolute;
+    top: 54px;
+    left: 184px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #426b1f;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: 26px;
+    white-space: nowrap;
+}
+
+.quantity-selector {
+    position: absolute;
+    left: 184px;
+    bottom: 24px;
+    width: 120px;
+    height: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid rgba(0, 0, 0, 0.06);
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 21px;
+    /*margin-left: 16px;*/
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: black;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 20.8px;
+    white-space: nowrap;
+    flex: 1;
+    text-align: center;
+    left: 16px;
+}
+
+.edit-icon {
+    height: 32px;
+    width: 32px;
+    margin-right: 8px;
+    color: #666;
+}
+
+.total-price {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: black;
+    font-size: 20px;
+    text-align: right;
+    letter-spacing: 0;
+    line-height: 26px;
+    white-space: nowrap;
+}
+
+/* Order Summary */
+.summary-card {
+    width: 100%;
+    background: #fafaf5;
+    border-radius: 24px;
+    border: 2px solid #e6e6e6;
+    padding: 24px;
+    position: relative;
+    right: 84px;
+    top: 45px;
+}
+
+.summary-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: black;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: 26px;
+    margin-bottom: 32px;
+}
+
+.summary-items {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.summary-label {
+    font-family: 'Inter', sans-serif;
+    color: black;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 20.8px;
+    font-weight: 400;
+}
+
+.summary-value {
+    font-family: 'Inter', sans-serif;
+    color: black;
+    font-size: 16px;
+    text-align: right;
+    letter-spacing: 0;
+    line-height: 20.8px;
+    font-weight: 400;
+}
+
+.summary-item.total .summary-label,
+.summary-item.total .summary-value {
+    font-weight: 600;
+}
+
+.checkout-btn {
+    width: 100%;
+    height: 48px;
+    background: #426b1f;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: white;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 20.8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    transition: background-color 0.2s ease;
+}
+
+.checkout-btn:hover {
+    background: rgba(66, 107, 31, 0.9);
+}
+
+.btn-text {
+    flex: 1;
+    text-align: left;
+    margin-left: 8px;
+}
+
+.arrow-icon {
+    height: 32px;
+    width: 32px;
+}
+
+.edit-icon {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    stroke: #b03030;
+    cursor: pointer;
+    transition: stroke 0.2s;
+    left: 90px;
+}
+.decrease, .increase {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    width: 32px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #426b1f;
+}
+.decrease:active,.increase:active {
+background-color: #2e9112;
+}
+/* Vegetable Styles */
+.vegetable {
+            position: fixed;
+            transition: transform 0.1s linear;
+            pointer-events: none;
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 3. Specific Vegetable Styles (Replaces Tailwind position/size classes) */
+        .veg-1 { /* Broccoli: Slow Parallax */
+            width: 96px; height: 96px; top: 121px; left: 355px; border-radius: 50%; 
+        }
+        .veg-2 { /* Carrot: Medium Follow */
+            width: 128px; height: 64px; top: 25%; right: 80px; border-radius: 12px;
+        }
+        .veg-3 { /* Tomato: Fast Follow */
+            width: 80px; height: 80px; bottom: 40px; left: 25%; border-radius: 50%;
+        }
+        .veg-4 { /* Pepper: Medium Parallax */
+            width: 112px; height: 112px; top: 50%; left: 16.33%; border-radius: 50%; 
+            /* Note: transform is still needed here for initial centering */
+        }
+        .veg-5 { /* Onion: Slow Follow */
+            width: 96px; height: 96px; bottom: 80px; right: 25%; border-radius: 50%;
+        }
+        .veg-6 { /* Lettuce: Very Slow Parallax */
+            width: 80px; height: 80px; top: 80px; right: 25%; border-radius: 50%;
+        }
+        .veg-7 { /* Ginger: Ultra Slow Parallax */
+            width: 80px; height: 80px; top: 200px; left: 50%; border-radius: 50%;
+        }
+
+    </style>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+  let cartItems = document.querySelectorAll(".product-card");
+  const subtotalEl = document.querySelector(".summary-item .summary-value"); 
+  const totalEl = document.querySelector(".summary-item.total .summary-value");
+  const basketBtn = document.querySelector(".basket-btn");
+  const itemsCountEl = document.querySelector(".items-count"); 
+  const shipping = 3.99;
+  const taxRate = 0.08; // 8% tax
+
+  function updateTotals() {
+    let subtotal = 0;
+    let itemCount = 0;
+
+    cartItems = document.querySelectorAll(".product-card"); // refresh list if items removed
+
+    cartItems.forEach(card => {
+      const quantity = parseInt(card.querySelector(".quantity").textContent);
+      const pricePerUnit = parseFloat(card.querySelector(".quantity-selector").dataset.price);
+      const totalPrice = quantity * pricePerUnit;
+      card.querySelector(".total-price").textContent = `$${totalPrice.toFixed(2)}`;
+
+      subtotal += totalPrice;
+      itemCount += quantity;
+    });
+
+    const tax = subtotal * taxRate;
+    const grandTotal = subtotal + (subtotal > 0 ? shipping : 0) + tax;
+
+    subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+    totalEl.textContent = `$${grandTotal.toFixed(2)}`;
+    basketBtn.textContent = `Basket (${itemCount})`;   
+    itemsCountEl.textContent = `${itemCount} item${itemCount !== 1 ? "s" : ""}`;
+  }
+
+  function attachEvents(card) {
+    const decreaseBtn = card.querySelector(".decrease");
+    const increaseBtn = card.querySelector(".increase");
+    const quantityEl = card.querySelector(".quantity");
+
+    decreaseBtn.addEventListener("click", () => {
+      let qty = parseInt(quantityEl.textContent);
+      qty--;
+      if (qty <= 0) {
+        card.remove(); // ✅ remove card from DOM
+      } else {
+        quantityEl.textContent = qty;
+      }
+      updateTotals();
+    });
+
+    increaseBtn.addEventListener("click", () => {
+      let qty = parseInt(quantityEl.textContent);
+      qty++;
+      quantityEl.textContent = qty;
+      updateTotals();
+    });
+  }
+
+  cartItems.forEach(attachEvents);
+  updateTotals(); // initial load
+});
+
+/*document.addEventListener("DOMContentLoaded", function () {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const productList = document.querySelector(".product-list");
+
+    // Clear placeholder items
+    productList.innerHTML = "";
+
+    cart.forEach(item => {
+        const card = document.createElement("div");
+        card.classList.add("product-card");
+        card.innerHTML = `
+            <img src="${item.image}" alt="${item.name}" class="product-image">
+            <div class="product-info">
+                <div class="product-name">${item.name}</div>
+                <div class="product-price-per-unit">${item.price}</div>
+                <div class="quantity-selector" data-price="${parseFloat(item.price)}">
+                    <button class="decrease">−</button>
+                    <span class="quantity">${item.quantity}</span>
+                    <button class="increase">+</button>
+                </div>
+                <div class="total-price">${item.price}</div>
+            </div>
+        `;
+        productList.appendChild(card);
+    });
+
+    // Reattach your cart logic (totals, +/− buttons, etc.)
+});*/
+
+</script>
+</head>
+
+<body>
+    
+
+
+
+
+     <img src="https://placehold.co/100x100/38761D/FFFFFF?text=Broccoli" data-speed="-0.06" class="vegetable veg-1" alt="Broccoli">
+    
+    <!-- Vegetable 2: Medium Follow (Mid-ground) -->
+    <img src="https://placehold.co/120x60/FF9900/FFFFFF?text=Carrot" data-speed="0.04" class="vegetable veg-2" alt="Carrot">
+
+    <!-- Vegetable 3: Fast Follow (Foreground) -->
+    <img src="https://placehold.co/90x90/A00000/FFFFFF?text=Tomato" data-speed="0.08" class="vegetable veg-3" alt="Tomato">
+
+    <!-- Vegetable 4: Medium Parallax -->
+    <img src="https://placehold.co/110x110/FFD966/000000?text=Pepper" data-speed="-0.05" class="vegetable veg-4" alt="Pepper">
+
+    <!-- Vegetable 5: Slow Follow -->
+    <img src="https://placehold.co/100x100/C27BA0/000000?text=Onion" data-speed="0.03" class="vegetable veg-5" alt="Onion">
+    
+    <!-- Vegetable 6: Very Slow Parallax (Very Deep Background) -->
+    <img src="https://placehold.co/80x80/6AA84F/FFFFFF?text=Lettuce" data-speed="-0.03" class="vegetable veg-6" alt="Lettuce">
+
+    <!-- Vegetable 7: Ultra Slow Parallax (Deep Background) -->
+    <img src="https://placehold.co/80x80/6AA84F/FFFFFF?text=ginger" data-speed="-0.03" class="vegetable veg-7" alt="Ginger">
+
+    
+    <div class="shopping-cart">
+        <section class="header-section">
+        <!-- Navigation Section -->
+        <header>
+            <div class="menu-bar">
+            <div class="logo" onclick="location.href='index.html'">World Peas</div>
+
+         <!-- Hamburger button -->
+            <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+
+           <div class="menu-content">
+            <nav>
+                <a href="Produce.html" class="nav-item">Shop</a>
+                <a href="404 error.html" class="nav-item">New Stand</a>
+                <a href="404 error.html" class="nav-item">Who we are</a>
+                <a href="404 error.html" class="nav-item">My profile</a>
+            </nav>
+                <button class="basket-btn" onclick="location.href='Shopping Cart.html'">Basket (0)</button>
+            </div>
+            </div>
+        </header>
+        </section>
+
+        <!-- Basket Page Heading Section -->
+        <section class="basket-heading">
+            <div class="heading-container">
+                <h1 class="basket-title">Basket</h1>
+                <div class="items-count">3 items</div>
+            </div>
+            <div class="separator"></div>
+        </section>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Product Items -->
+            <div class="product-list">
+                <!-- Tomato Item -->
+                <div class="product-card">
+                    <img src="TOMATOES.png" alt="Heirloom tomato" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Heirloom tomato</div>
+                        <div class="product-price-per-unit">$5.99 / lb</div>
+                        <div class="quantity-selector" data-price="5.99">
+                            <button class="decrease">−</button>
+                            <span class="quantity">0</span>
+                            <button class="increase">+</button>
+                        </div>
+                        <div class="total-price">$5.99</div>
+
+                    </div>
+                </div>
+
+                <!-- Ginger Item -->
+                <div class="product-card">
+                    <img src="GINGERA.png" alt="Organic ginger" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Organic ginger</div>
+                        <div class="product-price-per-unit">$12.99 / lb</div>
+                        <div class="quantity-selector" data-price="12.99">
+                            <button class="decrease">−</button>
+                            <span class="quantity">0</span>
+                            <button class="increase">+</button>
+                        </div>
+                        <div class="total-price">$5.99</div>
+                    </div>
+                </div>
+
+                <!-- Onion Item -->
+                <div class="product-card">
+                    <img src="ONIONS.png" alt="Sweet onion" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Sweet onion</div>
+                        <div class="product-price-per-unit">$2.99 / lb</div>
+                        <div class="quantity-selector" data-price="5.99">
+                            <button class="decrease">−</button>
+                            <span class="quantity">0</span>
+                            <button class="increase">+</button>
+                        </div>
+                        <div class="total-price">$5.99</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="order-summary">
+                <div class="summary-card">
+                    <h2 class="summary-title">Order summary</h2>
+                    <div class="summary-items">
+                        <div class="summary-item">
+                            <span class="summary-label">Subtotal</span>
+                            <span class="summary-value">$27.44</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Shipping</span>
+                            <span class="summary-value">$3.99</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Tax</span>
+                            <span class="summary-value">$2.00</span>
+                        </div>
+                        <div class="summary-item total">
+                            <span class="summary-label">Total</span>
+                            <span class="summary-value">$33.43</span>
+                        </div>
+                    </div>
+                    <button class="checkout-btn"onclick="location.href='thankyou-message.html'">
+                        <span class="btn-text">Continue to payment</span>
+                        <svg class="arrow-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14m-7-7 7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        const vegetables = document.querySelectorAll('.vegetable');
+
+        /**
+         * Calculates the offset for each vegetable based on the cursor position
+         * to create the parallax effect.
+         * @param {number} clientX - The cursor's X coordinate.
+         * @param {number} clientY - The cursor's Y coordinate.
+         */
+        function moveVegetables(clientX, clientY) {
+            // Get center of the viewport
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            // Calculate the difference from the center
+            const diffX = clientX - centerX;
+            const diffY = clientY - centerY;
+
+            vegetables.forEach(veg => {
+                const speed = parseFloat(veg.dataset.speed);
+                if (isNaN(speed)) return;
+
+                // Calculate the translation based on cursor difference and speed factor
+                const translateX = diffX * speed;
+                const translateY = diffY * speed;
+
+                // Apply the transform. For veg-4, we must account for its initial centering transform.
+                const initialTransform = veg.classList.contains('veg-4') ? 'translate(-50%, -50%)' : '';
+                veg.style.transform = `${initialTransform} translate(${translateX}px, ${translateY}px)`;
+            });
+        }
+
+        // --- Event Listeners ---
+
+        // 1. Mouse movement for desktop
+        document.addEventListener('mousemove', (e) => {
+            requestAnimationFrame(() => moveVegetables(e.clientX, e.clientY));
+        });
+
+        // 2. Touch movement for mobile devices
+        document.addEventListener('touchmove', (e) => {
+            // Prevent scrolling while touching and moving
+            e.preventDefault(); 
+            // Only consider the first touch point
+            const touch = e.touches[0];
+            if (touch) {
+                requestAnimationFrame(() => moveVegetables(touch.clientX, touch.clientY));
+            }
+        });
+
+        // 3. Handle device orientation for a tilt effect (optional mobile enhancement)
+        // This provides an alternative interaction on devices without a mouse
+        window.addEventListener('deviceorientation', (e) => {
+            if (e.gamma !== null && e.beta !== null) {
+                // Use gamma (left-right tilt) for X and beta (front-back tilt) for Y
+                // Normalize and scale the tilt values (-180 to 180 for gamma/beta) to cursor-like movement
+                const tiltX = (e.gamma / 90) * window.innerWidth / 2 + window.innerWidth / 2;
+                const tiltY = (e.beta / 90) * window.innerHeight / 2 + window.innerHeight / 2;
+                
+                requestAnimationFrame(() => moveVegetables(tiltX, tiltY));
+            }
+        });
+
+    </script>
+</body>
+</html>

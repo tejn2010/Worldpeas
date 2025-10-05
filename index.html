@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>World Peas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Newsreader:500,400|Inter:500,400,600");
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: rgba(255, 255, 220, 1);
+            color: black;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 127px;
+            padding: 33px 0;
+            background-color: rgba(255, 255, 220, 1);
+        }
+
+    header {
+    position: fixed;
+    width: 100%;
+    max-width: 1400px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 15px 12px 15px;
+    background: rgba(255, 255, 255, 0.15); /* translucent background */
+    -webkit-backdrop-filter: blur(12px); /* Safari support */
+    backdrop-filter: blur(12px); /* frosted glass blur */
+    border: 1px solid rgba(255, 255, 255, 0.25); /* subtle border */
+    border-radius: 12px;
+    z-index: 1500;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo */
+.logo {
+    position: absolute;
+    top: 19px;
+    font-family: 'Newsreader', serif;
+    font-weight: 500;
+    color: #426b1f; /* dark green text */
+    font-size: 36px;
+    letter-spacing: -0.32px;
+    line-height: 32px;
+}
+
+/* Navigation */
+nav {
+    position: absolute;
+    left: 836px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-item {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 20.8px;
+    text-decoration: none;
+    padding: 5px 7px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #426b1f;
+}
+
+/* Basket button */
+.basket-btn {
+    position: relative;
+    left: 1260px;
+    width: 116px;
+    height: 38px;
+    background: #426b1fe6;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    -webkit-backdrop-filter: blur(8px); /* Safari support */
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+
+.basket-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: #426b1f;
+}
+
+/* Menu bar layout */
+.menu-bar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.menu-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Hamburger menu (hidden on desktop) */
+.menu-toggle {
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none;
+    color: white;
+}
+
+        
+        /* Header Styles 
+        header {
+            position: fixed;
+            width: 1400px;
+            max-width: 100%;
+            padding: 12px 0;
+            background-color: rgb(255, 255, 255);
+            padding-left: 12px;
+            padding-right: 12px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            z-index: 1000;
+        }
+        .logo {
+            position:absolute;
+            top: 19px;
+            font-family: 'Newsreader', serif;
+            font-weight: 500;
+            color: #426b1f;
+            font-size: 36px;
+            letter-spacing: -0.32px;
+            line-height: 32px;
+        }
+        
+        nav {
+            position: absolute;
+         
+            left: 836px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .nav-item {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            color: black;
+            font-size: 16px;
+            line-height: 20.8px;
+            text-decoration: none;
+            padding: 5px 7px;
+            border-radius: 8px;
+        }
+        .nav-item:hover {
+            background-color: rgba(198, 195, 195, 0.9);
+            color: rgb(255, 255, 255);
+        }
+        
+        .basket-btn {
+            position: relative;
+         
+            left: 1260px;
+            width: 116px;
+            height: 38px;
+            background-color: #426b1f;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            
+        }
+        
+        .basket-btn:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        .menu-bar {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+        }
+        
+        .menu-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+          Mobile Styles 
+
+        .menu-toggle {
+            font-size: 28px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: none; /* hidden on desktop 
+        }*/
+        /* Main Content Styles */
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 57px;
+            justify-content: center;
+            margin-top: 300px;
+            z-index: 500;
+        }
+        
+        .hero-section {
+            width: 988px;
+            height: 174px;
+            position: relative;
+        }
+        
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            width: 988px;
+            height: 174px;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px;
+            justify-content: center;
+            top: 900px;
+        }
+        
+        .hero-title {
+            width: 968px;
+            font-family: 'Newsreader', serif;
+            font-weight: 400;
+            color: black;
+            font-size: 64px;
+            text-align: center;
+            letter-spacing: -1.28px;
+            line-height: 76.8px;
+        }
+        
+        .italic {
+            font-style: italic;
+            letter-spacing: -0.82px;
+        }
+        
+        .normal {
+            letter-spacing: -0.82px;
+        }
+        
+        .cta-section {
+            width: 247px;
+            height: 84px;
+            position: relative;
+        }
+        
+        .browse-btn {
+            width: 227px;
+            height: 64px;
+            position: relative;
+            top: 10px;
+            left: 10px;
+            background-color: #426b1f;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: white;
+            font-size: 20px;
+            line-height: 26px;
+            cursor: pointer;
+            -webkit-backdrop-filter: blur(8px); /* Safari support */
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            box-shadow: #919090;
+        }
+
+        
+        .browse-btn:hover {
+            background-color: #ffffffe6;
+            color: #426b1fe6;
+        }
+        
+        /* Image Section */
+        .image-section {
+            display: flex;
+            width: 1364px;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 105px;
+            z-index: 500;
+        }
+        
+        .left-image-container {
+            width: 524px;
+            height: 713px;
+            position: relative;
+        }
+        
+        .left-image {
+            position: absolute;
+            top: 10px;
+            left: 132px;
+            width: 407px;
+            height: 557px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+        
+        .right-image-container {
+            width: 800px;
+            height: 564px;
+            position: relative;
+        }
+        
+        .right-image-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 800px;
+            height: 500px;
+            display: flex;
+        }
+        
+        .right-image {
+            margin-top: 10px;
+            width: 576px;
+            height: 351px;
+            margin-left: 103px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+        
+        .image-caption {
+            position: absolute;
+            top: 367px;
+            left: 117px;
+            width: 571px;
+            height: 64px;
+            display: flex;
+        }
+        
+        .caption-text {
+            margin-top: 10px;
+            width: 748px;
+            height: 44px;
+            margin-left: 10px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            color: black;
+            font-size: 14px;
+            letter-spacing: -0.14px;
+            line-height: 22.4px;
+        }
+        
+        .caption-bold {
+            font-weight: 500;
+            letter-spacing: -0.02px;
+        }
+        
+        .caption-light {
+            font-weight: 300;
+            letter-spacing: -0.02px;
+        }
+        
+        /* Beliefs Section */
+        .beliefs-section {
+            display: flex;
+            align-items: flex-start;
+            gap: 32px;
+            z-index: 500;
+        }
+        
+        .beliefs-title {
+            width: 240px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: black;
+            font-size: 15px;
+            letter-spacing: 0.56px;
+            line-height: 22.4px;
+        }
+        
+        .beliefs-content {
+            width: 600px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            color: black;
+            font-size: 10px;
+            line-height: 32px;
+        }
+        
+        .menu-toggle {
+      font-size: 28px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: none; /* hidden on desktop */
+    }
+
+
+    .vegetable {
+            position: fixed;
+            transition: transform 0.1s linear;
+            pointer-events: none;
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 3. Specific Vegetable Styles (Replaces Tailwind position/size classes) */
+        .veg-1 { /* Broccoli: Slow Parallax */
+            width: 96px; height: 96px; top: 121px; left: 321px; border-radius: 50%; 
+        }
+        .veg-2 { /* Carrot: Medium Follow */
+            width: 128px; height: 64px; top: 25%; right: 80px; border-radius: 12px;
+        }
+        .veg-3 { /* Tomato: Fast Follow */
+            width: 80px; height: 80px; bottom: 40px; left: 25%; border-radius: 50%;
+        }
+        .veg-4 { /* Pepper: Medium Parallax */
+            width: 112px; height: 112px; top: 50%; left: 16.33%; border-radius: 50%; 
+            /* Note: transform is still needed here for initial centering */
+        }
+        .veg-5 { /* Onion: Slow Follow */
+            width: 96px; height: 96px; bottom: 80px; right: 25%; border-radius: 50%;
+        }
+        .veg-6 { /* Lettuce: Very Slow Parallax */
+            width: 80px; height: 80px; top: 80px; right: 25%; border-radius: 50%;
+        }
+        .veg-7 { /* Ginger: Ultra Slow Parallax */
+            width: 80px; height: 80px; top: 200px; left: 50%; border-radius: 50%;
+        }
+
+        .footer-content {
+            text-align: center;
+            padding: 20px;
+            background-color: #f1f1f1;
+            margin-top: 50px;
+        }
+    </style>
+
+</head>
+<body>
+      <img src="https://placehold.co/100x100/38761D/FFFFFF?text=Broccoli" data-speed="-0.06" class="vegetable veg-1" alt="Broccoli">
+    
+    <!-- Vegetable 2: Medium Follow (Mid-ground) -->
+    <img src="https://placehold.co/120x60/FF9900/FFFFFF?text=Carrot" data-speed="0.04" class="vegetable veg-2" alt="Carrot">
+
+    <!-- Vegetable 3: Fast Follow (Foreground) -->
+    <img src="https://placehold.co/90x90/A00000/FFFFFF?text=Tomato" data-speed="0.08" class="vegetable veg-3" alt="Tomato">
+
+    <!-- Vegetable 4: Medium Parallax -->
+    <img src="https://placehold.co/110x110/FFD966/000000?text=Pepper" data-speed="-0.05" class="vegetable veg-4" alt="Pepper">
+
+    <!-- Vegetable 5: Slow Follow -->
+    <img src="https://placehold.co/100x100/C27BA0/000000?text=Onion" data-speed="0.03" class="vegetable veg-5" alt="Onion">
+    
+    <!-- Vegetable 6: Very Slow Parallax (Very Deep Background) -->
+    <img src="https://placehold.co/80x80/6AA84F/FFFFFF?text=Lettuce" data-speed="-0.03" class="vegetable veg-6" alt="Lettuce">
+
+    <!-- Vegetable 7: Ultra Slow Parallax (Deep Background) -->
+    <img src="https://placehold.co/80x80/6AA84F/FFFFFF?text=ginger" data-speed="-0.03" class="vegetable veg-7" alt="Ginger">
+
+    <div class="container">
+        <header>
+             <div class="menu-bar">
+            <div class="logo">World Peas</div>
+
+         <!-- Hamburger button -->
+            <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+
+           <div class="menu-content">
+            <nav>
+                <a href="Produce.html" class="nav-item">Shop</a>
+                <a href="404 error.html" class="nav-item">New Stand</a>
+                <a href="404 error.html" class="nav-item">Who we are</a>
+                <a href="404 error.html" class="nav-item">My profile</a>
+            </nav>
+                <button class="basket-btn" onclick="location.href='Shopping Cart.html'">Basket (0)</button>
+            </div>
+            </div>
+        </header>
+        
+        <main>
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="normal">We're </span>
+                        <span class="italic">farmers</span>
+                        <span class="normal">, </span>
+                        <span class="italic">purveyors</span>
+                        <span class="normal">, and </span>
+                        <span class="italic">eaters</span>
+                        <span class="normal"> of organically grown food.</span>
+                    </h1>
+                </div>
+            </section>
+            
+            <div class="cta-section">
+                <button class="browse-btn" onclick="location.href='Produce.html'">Browse our shop</button>
+            </div>
+        </main>
+        
+        <section class="image-section">
+            <div class="left-image-container">
+                <img class="left-image" alt="Jonathan kemper" src="jonathan-kemper-1HHrdIoLFpU-unsplash 10.jpg" />
+            </div>
+            
+            <div class="right-image-container">
+                <div class="right-image-wrapper">
+                    <img class="right-image" alt="Fresh produce" src="Stocksy_txp226f62b2aNe300_Medium_4582193 10.jpg" />
+                </div>
+                
+                <div class="image-caption">
+                    <p class="caption-text">
+                        <span class="caption-bold">Central California</span>
+                        <span class="caption-light"> — The person who grew these was located in Central California and, er, hopefully very well-compensated.</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="beliefs-section">
+            <h2 class="beliefs-title">WHAT WE BELIEVE</h2>
+            
+            <div class="beliefs-content">
+                We believe in produce. Tasty produce. Produce like:
+                <br />
+                Apples. Oranges. Limes. Lemons. Guavas. Carrots. Cucumbers. Jicamas. Cauliflowers. Brussels sprouts. Shallots. Japanese eggplants. Asparagus.
+                 Artichokes—Jerusalem artichokes, too.Radishes. Broccoli. Baby broccoli. Broccolini. Bok choy. Scallions. Ginger. Cherries. Raspberries. Cilantro. Parsley. Dill.
+                <br />
+                What are we forgetting?
+                <br />
+                Oh! Onions. Yams. Avocados. Lettuce. Arugula (to some, "rocket"). Persian cucumbers, in addition to aforementioned "normal" cucumbers. Artichokes. 
+                Zucchinis. Pumpkins. Squash (what some cultures call pumpkins). Sweet potatoes and potato-potatoes. Jackfruit. Monk fruit. Fruit of the Loom. Fruits of our labor (this website). 
+                Sorrel. Pineapple. Mango. Gooseberries. Blackberries. Tomatoes. Heirloom tomatoes. Beets. Chives. Corn. Endive. Escarole, which, we swear, we're vendors of organic produce, but 
+        >
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            &copy; 2024 World Peas. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        const vegetables = document.querySelectorAll('.vegetable');
+
+        /**
+         * Calculates the offset for each vegetable based on the cursor position
+         * to create the parallax effect.
+         * @param {number} clientX - The cursor's X coordinate.
+         * @param {number} clientY - The cursor's Y coordinate.
+         */
+        function moveVegetables(clientX, clientY) {
+            // Get center of the viewport
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            // Calculate the difference from the center
+            const diffX = clientX - centerX;
+            const diffY = clientY - centerY;
+
+            vegetables.forEach(veg => {
+                const speed = parseFloat(veg.dataset.speed);
+                if (isNaN(speed)) return;
+
+                // Calculate the translation based on cursor difference and speed factor
+                const translateX = diffX * speed;
+                const translateY = diffY * speed;
+
+                // Apply the transform. For veg-4, we must account for its initial centering transform.
+                const initialTransform = veg.classList.contains('veg-4') ? 'translate(-50%, -50%)' : '';
+                veg.style.transform = `${initialTransform} translate(${translateX}px, ${translateY}px)`;
+            });
+        }
+
+        // --- Event Listeners ---
+
+        // 1. Mouse movement for desktop
+        document.addEventListener('mousemove', (e) => {
+            requestAnimationFrame(() => moveVegetables(e.clientX, e.clientY));
+        });
+
+        // 2. Touch movement for mobile devices
+        document.addEventListener('touchmove', (e) => {
+            // Prevent scrolling while touching and moving
+            e.preventDefault(); 
+            // Only consider the first touch point
+            const touch = e.touches[0];
+            if (touch) {
+                requestAnimationFrame(() => moveVegetables(touch.clientX, touch.clientY));
+            }
+        });
+
+        // 3. Handle device orientation for a tilt effect (optional mobile enhancement)
+        // This provides an alternative interaction on devices without a mouse
+        window.addEventListener('deviceorientation', (e) => {
+            if (e.gamma !== null && e.beta !== null) {
+                // Use gamma (left-right tilt) for X and beta (front-back tilt) for Y
+                // Normalize and scale the tilt values (-180 to 180 for gamma/beta) to cursor-like movement
+                const tiltX = (e.gamma / 90) * window.innerWidth / 2 + window.innerWidth / 2;
+                const tiltY = (e.beta / 90) * window.innerHeight / 2 + window.innerHeight / 2;
+                
+                requestAnimationFrame(() => moveVegetables(tiltX, tiltY));
+            }
+        });
+
+    </script>
+</body>
+</html>
